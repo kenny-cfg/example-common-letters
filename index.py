@@ -9,6 +9,7 @@ Write unit tests for the previous function. Make sure it covers valid, invalid a
 cases.
 '''
 
+
 class CommonLettersException(Exception):
     pass
 
@@ -20,11 +21,25 @@ def three_most_common_letters(sentence):
         if 'a' <= character <= 'z':
             letters.append(character)
     letter_count = {}
-    for letter in letters:
-        if not letter in letter_count.keys():
-            letter_count[letter] = 0
-        letter_count[letter] = letter_count[letter] + 1
-    return ['a', 'b', 'c']
+    for individual_letter in letters:
+        if individual_letter not in letter_count.keys():
+            letter_count[individual_letter] = 0
+        letter_count[individual_letter] = letter_count[individual_letter] + 1
+    most_common_letter = None
+    next_most_common_letter = None
+    third_most_common_letter = None
+    for individual_letter in letter_count:
+        count = letter_count[individual_letter]
+        if most_common_letter is None or count > letter_count[most_common_letter]:
+            third_most_common_letter = next_most_common_letter
+            next_most_common_letter = most_common_letter
+            most_common_letter = individual_letter
+        elif next_most_common_letter is None or count > letter_count[next_most_common_letter]:
+            third_most_common_letter = next_most_common_letter
+            next_most_common_letter = individual_letter
+        elif third_most_common_letter is None or count > letter_count[third_most_common_letter]:
+            third_most_common_letter = individual_letter
+    return [most_common_letter, next_most_common_letter, third_most_common_letter]
 
 
 if __name__ == '__main__':
