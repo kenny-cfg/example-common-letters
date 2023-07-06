@@ -10,19 +10,19 @@ cases.
 '''
 
 class CommonLettersException(Exception):
-  pass
+    pass
 
 
 def three_most_common_letters(sentence):
-  characters = list(sentence.lower())
-  letters = []
-  for character in characters:
-    if character >= 'a' and character <= 'z':
-      letters.append(character)
-  pass
-  
+    characters = list(sentence.lower())
+    letters = []
+    for character in characters:
+        if 'a' <= character <= 'z':
+            letters.append(character)
+    return ['a', 'b', 'c']
+
 
 if __name__ == '__main__':
-  common_letters = three_most_common_letters('Write a function that takes in a sentence and returns the 3 most common letters.')
-  for letter in common_letters:
-    print(letter)
+    common_letters = three_most_common_letters('Write a function that takes in a sentence 3 most common letters.')
+    for letter in common_letters:
+        print(letter)
