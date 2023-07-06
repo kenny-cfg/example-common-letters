@@ -39,10 +39,12 @@ def three_most_common_letters(sentence):
             next_most_common_letter = individual_letter
         elif third_most_common_letter is None or count > letter_count[third_most_common_letter]:
             third_most_common_letter = individual_letter
+    if most_common_letter is None or next_most_common_letter is None or third_most_common_letter is None:
+        raise CommonLettersException
     return [most_common_letter, next_most_common_letter, third_most_common_letter]
 
 
 if __name__ == '__main__':
-    common_letters = three_most_common_letters('Write a function that takes in a sentence 3 most common letters.')
+    common_letters = three_most_common_letters('Hello world') # l, o
     for letter in common_letters:
         print(letter)
