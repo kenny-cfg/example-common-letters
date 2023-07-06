@@ -1,13 +1,4 @@
-'''
-Question 1
-Write a function that takes in a sentence and returns the 3 most common letters. 
-Spaces should not be counted as letters.
-Raise a custom exception when this function wouldn’t be able to return 3 common
-letters.
-Question 2
-Write unit tests for the previous function. Make sure it covers valid, invalid and edge
-cases.
-'''
+from collections import Counter
 
 
 class CommonLettersException(Exception):
@@ -20,11 +11,7 @@ def three_most_common_letters(sentence):
     for character in characters:
         if 'a' <= character <= 'z':
             letters.append(character)
-    letter_count = {}
-    for individual_letter in letters:
-        if individual_letter not in letter_count.keys():
-            letter_count[individual_letter] = 0
-        letter_count[individual_letter] = letter_count[individual_letter] + 1
+    letter_count = Counter(letters)
     most_common_letter = None
     next_most_common_letter = None
     third_most_common_letter = None
@@ -45,6 +32,6 @@ def three_most_common_letters(sentence):
 
 
 if __name__ == '__main__':
-    common_letters = three_most_common_letters('Hello world') # l, o
+    common_letters = three_most_common_letters('Hello world')
     for letter in common_letters:
         print(letter)
