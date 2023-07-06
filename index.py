@@ -19,6 +19,11 @@ def three_most_common_letters(sentence):
     for character in characters:
         if 'a' <= character <= 'z':
             letters.append(character)
+    letter_count = {}
+    for letter in letters:
+        if not letter in letter_count.keys():
+            letter_count[letter] = 0
+        letter_count[letter] = letter_count[letter] + 1
     return ['a', 'b', 'c']
 
 
